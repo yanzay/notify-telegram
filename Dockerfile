@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN go build -v -o notify-telegram .
+RUN CGO_ENABLED=0 go build -v -o notify-telegram .
 
 FROM alpine:latest
 

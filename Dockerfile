@@ -1,7 +1,13 @@
-FROM alpine:3.10
+FROM golang:1.13 as builder
 
-COPY LICENSE README.md /
+WORKDIR /app
 
-COPY entrypoint.sh /entrypoint.sh
+COPY . /app
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN go build -v -o notify-telegram .
+
+FROM alpine:latest
+
+COPY --from=builder /app/notify-telegram /notify-telegram
+
+ENTRYPOINT ["/notify-telegram"]

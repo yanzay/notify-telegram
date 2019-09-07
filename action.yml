@@ -1,12 +1,16 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Notify Telegram'
+description: 'Get build notification to Telegram messenger'
+author: 'yanzay'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  chat:
+    description: 'Chat to send: user or chat id, @user_name or @channel_name'
+    required: true
+  token:
+    description: 'Telegram Bot token'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.myInput }}
+    - ${{ inputs.chat }}
+    - ${{ inputs.token }}

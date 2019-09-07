@@ -37,7 +37,9 @@ func main() {
 
 	workflow := os.Getenv("GITHUB_WORKFLOW")
 	repo := os.Getenv("GITHUB_REPOSITORY")
-	msg := fmt.Sprintf(`%s*%s*: %s (%s)`, icon, status, repo, workflow)
+	commit := os.Getenv("GITHUB_SHA")
+	link := fmt.Sprintf("https://github.com/%s/commit/%s/checks", repo, commit)
+	msg := fmt.Sprintf(`%s*%s*: %s [%s](%s)`, icon, status, repo, workflow, link)
 
 	_, err := c.SendMessage(chat, msg, tbot.OptParseModeMarkdown)
 	if err != nil {

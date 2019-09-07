@@ -27,6 +27,7 @@ func main() {
 		"GITHUB_BASE_REF", "GITHUB_EVENT_NAME", "GITHUB_WORKSPACE",
 		"GITHUB_ACTION", "GITHUB_EVENT_PATH", "RUNNER_OS",
 		"RUNNER_TOOL_CACHE", "RUNNER_TEMP", "RUNNER_WORKSPACE",
+		"STEPS_CONTEXT", "JOB_CONTEXT",
 	}
 	for _, v := range env {
 		fmt.Printf("%s: %s\n", v, os.Getenv(v))

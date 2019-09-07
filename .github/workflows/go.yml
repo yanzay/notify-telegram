@@ -23,3 +23,6 @@ jobs:
       with:
         chat: ${{ secrets.chat }}
         token: ${{ secrets.token }}
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+        JOB_CONTEXT: ${{ toJson(job) }}

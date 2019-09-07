@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: go build -v .
       
-    - uses: yanzay/notify-telegram
+    - uses: yanzay/notify-telegram@master
       with:
         chat: ${{ secrets.chat }}
         token: ${{ secrets.token }}

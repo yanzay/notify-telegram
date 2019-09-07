@@ -11,6 +11,3 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.chat }}
-    - ${{ inputs.token }}

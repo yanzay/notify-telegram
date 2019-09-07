@@ -20,9 +20,8 @@ jobs:
       run: go build -v .
       
     - uses: yanzay/notify-telegram@master
+      if: always()
       with:
         chat: ${{ secrets.chat }}
         token: ${{ secrets.token }}
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-        JOB_CONTEXT: ${{ toJson(job) }}
+        status: ${{ job.status }}

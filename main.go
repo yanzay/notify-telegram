@@ -5,9 +5,16 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/yanzay/tbot/v2"
 )
+
+var icons = map[string]string{
+	"failure":   "❗",
+	"cancelled": "❕",
+	"success":   "✅",
+}
 
 func main() {
 	var (
@@ -26,9 +33,11 @@ func main() {
 	}
 	c := tbot.NewClient(token, http.DefaultClient, "https://api.telegram.org")
 
+	icon := icons[strings.ToLower(status)]
+
 	workflow := os.Getenv("GITHUB_WORKFLOW")
 	repo := os.Getenv("GITHUB_REPOSITORY")
-	msg := fmt.Sprintf(`*%s*: %s (%s)`, status, repo, workflow)
+	msg := fmt.Sprintf(`%s*%s*: %s (%s)`, icon, status, repo, workflow)
 
 	_, err := c.SendMessage(chat, msg, tbot.OptParseModeMarkdown)
 	if err != nil {

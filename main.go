@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 
@@ -9,8 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) < 3 {
-		println("too few arguments")
-		return
+		log.Fatal("too few arguments")
 	}
 	var (
 		token = os.Args[1]
@@ -19,7 +19,6 @@ func main() {
 	c := tbot.NewClient(token, http.DefaultClient, "https://api.telegram.org")
 	_, err := c.SendMessage(chat, "test")
 	if err != nil {
-		println(err)
-		return
+		log.Fatalf("unable to send message: %v", err)
 	}
 }

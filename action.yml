@@ -3,7 +3,7 @@ description: 'Get build notification to Telegram messenger'
 author: 'yanzay'
 inputs: 
   chat:
-    description: 'Chat to send: user or chat id, @user_name or @channel_name'
+    description: 'Chat to send: chat id or @channel_name'
     required: true
   token:
     description: 'Telegram Bot token'

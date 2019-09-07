@@ -11,7 +11,6 @@ inputs:
   status:
     description: 'Job status'
     required: true
-    default: '${{ job.status }}'
 runs:
   using: 'docker'
   image: 'Dockerfile'

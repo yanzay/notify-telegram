@@ -24,4 +24,4 @@ jobs:
       with:
         chat: ${{ secrets.chat }}
         token: ${{ secrets.token }}
-        # status: ${{ job.status }}
+        status: ${{ job.status }}

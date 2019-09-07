@@ -8,6 +8,10 @@ inputs:
   token:
     description: 'Telegram Bot token'
     required: true
+  status:
+    description: 'Job status'
+    required: true
+    default: ${{ job.status }}
 runs:
   using: 'docker'
   image: 'Dockerfile'
